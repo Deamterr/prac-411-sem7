@@ -1,10 +1,12 @@
+from method import PenaltyMethod
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def launch_method() -> None:
+    starting_point = [float(i) for i in input('Input starting point (for example: "0, 1"):\n').split(',')]
+    termination_scalar = float(input('Input termination_scalar (for example: 1e-9):\n'))
+    method = PenaltyMethod(starting_point=starting_point, termination_scalar=termination_scalar)
+    optimum, optimum_value, iterations = method.launch()
+    print('Point of optimum: {}\nOptimum value: '
+          '{}\nNumber of iterations: {}\n'.format(optimum, optimum_value, iterations))
 
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
+    launch_method()
